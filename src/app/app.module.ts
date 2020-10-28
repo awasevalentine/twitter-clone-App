@@ -9,6 +9,8 @@ import { AccountCreationComponent } from './Pages/Auth/account-creation/account-
 import { UserLoginComponent } from './Pages/Auth/user-login/user-login.component';
 import { DashboardComponent } from './Pages/Components/dashboard/dashboard.component';
 import { PageLayoutComponent } from './Pages/Components/page-layout/page-layout.component';
+import { HomePageComponent } from './Pages/Components/home-page/home-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { PageLayoutComponent } from './Pages/Components/page-layout/page-layout.
     AccountCreationComponent,
     UserLoginComponent,
     DashboardComponent,
-    PageLayoutComponent
+    PageLayoutComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
