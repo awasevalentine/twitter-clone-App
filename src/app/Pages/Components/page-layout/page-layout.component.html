@@ -11,9 +11,9 @@
           </div>
           <div class="sidenav-wrapper1">
             <i class="fa fa-twitter link-wrapper" aria-hidden="true" style="font-size: 30px; color: blue;"></i>
-           <i class="fa fa-home link-wrapper" aria-hidden="true"><a href="" class="ml-3" style="font-size: 17px;">Home</a></i>
-            <i class="fa fa-user link-wrapper" aria-hidden="true"><a href="" class="ml-3" style="font-size: 17px;">Profile</a> </i>
-            <i class="fa fa-wrench link-wrapper" aria-hidden="true"><a href="" class="ml-3" style="font-size: 17px;">Setting</a> </i>
+           <i class="fa fa-home link-wrapper" aria-hidden="true"><a [routerLink]="['/dashboard/']" class="ml-3" style="font-size: 17px;">Home</a></i>
+            <i class="fa fa-user link-wrapper" aria-hidden="true"><a [routerLink]="['/dashboard/']" class="ml-3" style="font-size: 17px;">Profile</a> </i>
+            <i class="fa fa-wrench link-wrapper" aria-hidden="true"><a [routerLink]="['/dashboard/']" class="ml-3" style="font-size: 17px;">Setting</a> </i>
           </div>
             <div class="button-wrapper">
               <button class="btn btn-primary button-wrapper mr-5">tweet</button>
@@ -30,25 +30,6 @@
             <h1 class="display-3 bold">Home</h1>
             <hr>
           </div>
-
-          <!--div class="user-tweet-wrapper mt-5">
-            <form #tweetForm = 'ngForm' class="example-form">
-              <div *ngIf="this.user.isLoggedIn()">
-
-              <i class="fa fa-user-circle mr-4" aria-hidden="true" style="font-size: 50px;">{{this.user.getUser()}}</i>
-            </div>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="What's happening?" autocomplete="off" name="tweet" id="tweet" [(ngModel)] = "tweet" required>
-              </mat-form-field>
-
-
-            </form>
-            <div class="mb-5">
-              <button type="submit" class="btn btn-primary float-right mr-5" style="width: 100px;" (click)="postTweet()">tweet</button>
-            </div>
-
-
-          </div-->
 
           <router-outlet></router-outlet>
 
