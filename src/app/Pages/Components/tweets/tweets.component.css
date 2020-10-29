@@ -1,0 +1,57 @@
+.main-wrapper{
+    height: 100%;
+    width: 100%;
+  }
+  .grid-wrapper{
+    height: 100%;
+  }
+  
+  .sidenav-wrapper1{
+    display: inline-flex;
+    flex-direction: column;
+    padding: 10em;
+    padding-top: 3em !important;
+    padding-bottom: 2em !important;
+  }
+  .link-wrapper{
+    padding-top: 3em;
+    padding-right: 3em !important;
+  }
+  .example-full-width{
+    width: 300px;
+    border-width: 0px;
+    border-radius: 0px;
+  }
+  .button-wrapper{
+    float: right !important;
+    padding-right: 0 !important;
+    width: 150px;
+  
+  }
+  
+  .example-card {
+    max-width:100%;
+    background-color: unset;
+    color: black;
+  }
+  
+  .wrapper{
+    background-color: rgba(11, 86, 226, 0.979) !important;
+    color: white !important;
+  }
+  
+  .example-header-image {
+  
+    background-size: cover;
+  }
+  .textarea-wrapper{
+    resize: none;
+  }
+  .close{
+    cursor: pointer;
+  }
+  .liked-class {
+    color: rgb(224, 36, 94);
+  }
+  
+  

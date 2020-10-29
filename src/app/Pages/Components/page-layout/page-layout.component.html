@@ -1,0 +1,43 @@
+<div class="main-wrapper">
+    <div class="row grid-wrapper">
+
+      <!-- sidenav start-->
+        <div class="col-3 sidenav-start-wrapper">
+          <div class="user-wrapper ml-4 mt-5">
+
+            <button type="button" (click)="logout()">logOut</button>
+
+
+          </div>
+          <div class="sidenav-wrapper1">
+            <i class="fa fa-twitter link-wrapper" aria-hidden="true" style="font-size: 30px; color: blue;"></i>
+           <i class="fa fa-home link-wrapper" aria-hidden="true"><a [routerLink]="['/dashboard/']" class="ml-3" style="font-size: 17px;">Home</a></i>
+            <i class="fa fa-user link-wrapper" aria-hidden="true"><a [routerLink]="['/dashboard/']" class="ml-3" style="font-size: 17px;">Profile</a> </i>
+            <i class="fa fa-wrench link-wrapper" aria-hidden="true"><a [routerLink]="['/dashboard/']" class="ml-3" style="font-size: 17px;">Setting</a> </i>
+          </div>
+            <div class="button-wrapper">
+              <button class="btn btn-primary button-wrapper mr-5">tweet</button>
+            </div>
+
+
+
+        </div>
+
+        <!--main tweet content-->
+
+        <div class="col-6">
+          <div class="header-wrapper mt-5">
+            <h1 class="display-3 bold">Home</h1>
+            <hr>
+          </div>
+
+          <router-outlet></router-outlet>
+
+
+        </div>
+<!-- sidenav end-->
+        <div class="col-3 bg-white">
+
+        </div>
+    </div>
+</div>
