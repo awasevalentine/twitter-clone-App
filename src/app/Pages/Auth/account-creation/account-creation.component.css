@@ -8,6 +8,15 @@ main-content-wrapper {
   background-color: silver;
   height: 100%;
 }
+.main-card-wrapper{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-wrapper{
+  width: 500px;
+}
 
 .form-signin {
   width: 100%;

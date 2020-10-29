@@ -51,7 +51,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   imports: [
     MatFormFieldModule,
     A11yModule,
-    //ClipboardModule,
+   // ClipboardModule,
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
@@ -94,8 +94,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     OverlayModule,
     PortalModule,
     ScrollingModule,
-  
-    
+    MatFormFieldModule
+
+
              ],
     exports: [
 
@@ -143,6 +144,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    MatFormFieldModule
             ],
             providers: [
                 MatDatepickerModule,

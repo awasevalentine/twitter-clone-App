@@ -1,0 +1,81 @@
+<div style="margin-bottom: 10px;">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image" *ngIf="this.user.isLoggedIn()">
+        <i class="fa fa-user-circle mr-5" aria-hidden="true" style="font-size: 50px;"></i>
+      </div>
+      <mat-card-title class="ml-1" style="font-size: 11px;">{{this.user.getUser()}}</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <div class="mt-3" style="padding-left: 5em;">
+    <mat-card-content class="w-100">
+      <form #tweetForm = 'ngForm' class="example-form w-100">
+        <mat-form-field class="example-full-width">
+          <textarea matInput class="textarea-wrapper w-100" name="tweet" id="tweet" cols="90" rows="2" autocomplete="off" placeholder="What's happening?"  [(ngModel)] = "tweetMsg"></textarea>
+        </mat-form-field>
+
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+
+        <button mat-button type="submit" [disabled] = "!tweetMsg" class="wrapper btn btn-primary float-right mr-5" style="width: 100px;" (click)="postTweet()">tweet</button>
+    </mat-card-actions>
+  </div>
+  </mat-card>
+</div>
+<div class="content-wrapper" *ngFor="let tweet of tweets">
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"> <i class="fa fa-user-circle mr-5" aria-hidden="true" style="font-size: 50px;"></i></div>
+      <mat-card-title class="ml-1" style="font-size: 11px;">{{tweet.user_Id.split("@")[0]}}</mat-card-title>
+      <mat-card-subtitle>{{tweet.date_Created | date: "medium"}}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="mt-3" style="padding-left: 5em;">
+    <mat-card-content>
+     {{tweet.content}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button type="submit" (click) = "likeButton(tweet)">
+        <i class="fa" [ngClass]="{'liked-class': tweet['liked'], 'fa-heart': tweet['liked'], 'fa-heart-o': !tweet['liked']}"></i>
+      </button> <span class="badge" *ngIf="tweet.likes_Count != 0 ">{{tweet.likes_Count}}</span>
+      <button mat-button type="submit" (click)="commentButton(tweet)">Comment</button>  <span class="badge"  *ngIf="tweet.commentsCount != 0 ">{{tweet.commentsCount}}</span>
+      <button *ngIf="tweet.user_Id == loggedInUserId" mat-icon-button type="submit" (click) = "deleteButton(tweet)">
+        <i class="fa fa-trash-o"></i>
+      </button>
+    </mat-card-actions>
+  </div>
+  </mat-card>
+
+  <hr>
+
+
+</div>
+
+
+<div>
+  <ng-template #commentTemplateModal>
+
+  <div class="container-fluid w-100">
+    <span class="close d-inline-block align-top" (click)="commentModal.close()">&times;</span>
+      <div mat-mat-dialog-content class="align-items-center pt-3 pb-2 mb-3 border-bottom input-wrapper d-sm-flex justify-content-center w-100">
+      <form #tweetForm="ngForm" method="POST" action="/create" id="newTodos" name="newTodos" class="w-100">
+
+                  <mat-form-field class="example-full-width">
+
+                       <textarea class="textarea-wrapper"  autocomplete="off" matInput rows="10" cols="50" name="commentsDetails" id="commentsDetails" placeholder="Enter comment" [(ngModel)]="commentMsg"></textarea>
+
+                  </mat-form-field>
+      </form>
+      </div>
+            <div mat-dialog-actions>
+          <div class=" reply-button-wrapper mt-sm-3 d-flex justify-content-left">
+              <button mat-raised-button color="primary" type="submit" class="btn-lg" (click)="postComment()" [disabled]="!commentMsg">Reply</button>
+            </div>
+          </div>
+
+  </div>
+  </ng-template>
+  </div>
+

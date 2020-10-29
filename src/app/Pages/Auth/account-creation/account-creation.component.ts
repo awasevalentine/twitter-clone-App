@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthService } from '../../Cores/Services/auth.service';
 
 @Component({
   selector: 'app-account-creation',
@@ -12,11 +13,11 @@ import { Router } from '@angular/router';
 export class AccountCreationComponent implements OnInit {
   regForm: FormGroup;
 
-  constructor(private _snackbar: MatSnackBar, private router: Router) {
+  constructor(private _snackbar: MatSnackBar, private router: Router, private authService: AuthService) {
     this.regForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      userName: new FormControl('', [Validators.required]),
-      passwordHash: new FormControl('', [Validators.required, Validators.minLength(6)])
+      fullName: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
    }
 
@@ -24,7 +25,7 @@ export class AccountCreationComponent implements OnInit {
   }
 
   register() {
-    this.authService.register(this.regForm.value)
+    this.authService.signUp(this.regForm.value)
       .subscribe(() => {
         console.log(`from inside `, this.regForm.value);
         this._snackbar.open('Your account was successfully created ', 'Ok', {horizontalPosition: 'right', verticalPosition: 'bottom'});

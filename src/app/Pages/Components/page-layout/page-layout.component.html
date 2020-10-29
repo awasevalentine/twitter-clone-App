@@ -2,7 +2,13 @@
     <div class="row grid-wrapper">
 
       <!-- sidenav start-->
-        <div class="col-3">
+        <div class="col-3 sidenav-start-wrapper">
+          <div class="user-wrapper ml-4 mt-5">
+
+            <button type="button" (click)="logout()">logOut</button>
+
+
+          </div>
           <div class="sidenav-wrapper1">
             <i class="fa fa-twitter link-wrapper" aria-hidden="true" style="font-size: 30px; color: blue;"></i>
            <i class="fa fa-home link-wrapper" aria-hidden="true"><a href="" class="ml-3" style="font-size: 17px;">Home</a></i>
@@ -13,10 +19,7 @@
               <button class="btn btn-primary button-wrapper mr-5">tweet</button>
             </div>
 
-            <div class="user-wrapper">
 
-
-            </div>
 
         </div>
 
@@ -27,6 +30,25 @@
             <h1 class="display-3 bold">Home</h1>
             <hr>
           </div>
+
+          <!--div class="user-tweet-wrapper mt-5">
+            <form #tweetForm = 'ngForm' class="example-form">
+              <div *ngIf="this.user.isLoggedIn()">
+
+              <i class="fa fa-user-circle mr-4" aria-hidden="true" style="font-size: 50px;">{{this.user.getUser()}}</i>
+            </div>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="What's happening?" autocomplete="off" name="tweet" id="tweet" [(ngModel)] = "tweet" required>
+              </mat-form-field>
+
+
+            </form>
+            <div class="mb-5">
+              <button type="submit" class="btn btn-primary float-right mr-5" style="width: 100px;" (click)="postTweet()">tweet</button>
+            </div>
+
+
+          </div-->
 
           <router-outlet></router-outlet>
 

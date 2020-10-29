@@ -5,11 +5,11 @@ import { HomePageComponent } from './Pages/Components/home-page/home-page.compon
 import { DashboardComponent } from './Pages/Components/dashboard/dashboard.component';
 import { AccountCreationComponent } from './Pages/Auth/account-creation/account-creation.component';
 import { UserLoginComponent } from './Pages/Auth/user-login/user-login.component';
+import { LoggedInGuard } from './Pages/Auth/logged-in.guard';
+import { TweetsComponent } from './Pages/Components/tweets/tweets.component';
 
 const routes: Routes = [
-  {
-    path: '', component: HomePageComponent
-  },
+
   {
     path: 'user-registration', component: AccountCreationComponent
   },
@@ -17,13 +17,17 @@ const routes: Routes = [
     path: 'user-login', component: UserLoginComponent
   },
   {
-    path:'dashboard', component: DashboardComponent
+    path: '', component: PageLayoutComponent, canActivate: [ LoggedInGuard ]
   },
   {
-  path:"layout", component: PageLayoutComponent
-  },
-  {
-    path: "home", component: HomePageComponent
+    path: 'dashboard', component: PageLayoutComponent, canActivate: [ LoggedInGuard ],
+    children: [
+      {
+        path: '', component: TweetsComponent, canActivate: [ LoggedInGuard ]
+      },
+
+
+    ]
   }
 ];
 

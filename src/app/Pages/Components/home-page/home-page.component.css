@@ -39,4 +39,6 @@
 
   background-size: cover;
 }
-
+button :focus {
+  outline: none !important;
+}

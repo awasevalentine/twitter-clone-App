@@ -11,6 +11,11 @@ import { DashboardComponent } from './Pages/Components/dashboard/dashboard.compo
 import { PageLayoutComponent } from './Pages/Components/page-layout/page-layout.component';
 import { HomePageComponent } from './Pages/Components/home-page/home-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './Pages/Cores/Services/auth.service';
+import { LoggedInGuard } from './Pages/Auth/logged-in.guard';
+import { TweetsComponent } from './Pages/Components/tweets/tweets.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserLoginComponent,
     DashboardComponent,
     PageLayoutComponent,
-    HomePageComponent
+    HomePageComponent,
+    TweetsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +33,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthService, LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
