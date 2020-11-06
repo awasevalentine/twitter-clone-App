@@ -1,17 +1,33 @@
 .main-wrapper{
     height: 100%;
     width: 100%;
+ 
   }
-  .grid-wrapper{
-    height: 100%;
+  .main-content-wrapper{
+    border-right: solid silver 1px;
+  }
+  .sidenav-start-wrapper{
+    border-right: solid silver 1px;
+  }
+  .user-wrapper{
+    z-index: 1;
   }
   
   .sidenav-wrapper1{
     display: inline-flex;
     flex-direction: column;
-    padding: 10em;
-    padding-top: 3em !important;
-    padding-bottom: 2em !important;
+    padding-left: 2em;
+
+   
+  }
+  .header-wrapper{
+    border-bottom: solid silver 1px;
+    background-color: white !important;
+  }
+
+  .sidenav-right-wrapper{
+    border-right: solid silver 1px;
+    width: 100%;
   }
   .link-wrapper{
     padding-top: 3em;
@@ -22,11 +38,17 @@
     border-width: 0px;
     border-radius: 0px;
   }
-  .button-wrapper{
-    float: right !important;
-    padding-right: 0 !important;
+  .tweet-wrapper{
     width: 150px;
-  
+    text-align: center;
+    z-index: -2;
+  }
+  .btn-wrapper{
+    width: 150px;
+    text-align: center;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20%/70%;
   }
   
   .example-card {
@@ -47,9 +69,17 @@
       outline:none;
   
   }
-  .sidenav-start-wrapper{
-    position: relative;
-    position: -webkit-sticky;
+
+  /* modal styling*/
+
+  .pull-right{
+    padding-top: 0;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
   }
+ 
+
+
   
   

@@ -18,6 +18,8 @@ export class TweetsComponent implements OnInit {
   public tweets: Tweets[] = [];
 
   loggedInUserId: string = '';
+  myloader: boolean;
+
 
   tweetMsg: string;
   tweet: CreateUSerTweet;
@@ -58,16 +60,22 @@ export class TweetsComponent implements OnInit {
 
 
   getALlTweets(){
+   
     this._tweetService.getTweets().subscribe(
       (data) => {
+        if(data){
+          this.myloader = true;
+        }
         this.tweets = data && data.length > 1 ? data.reverse(): [];
         console.log(`this are the tweets `, data);
+        this.myloader = false;
       },
       (err) => {
         throw new ErrorEvent(`could not fetch datas`, err);
       }
     )
   }
+
 
   likeButton(tweet: Tweets): void {
     let twitId = tweet.twit_Id;
@@ -124,7 +132,7 @@ export class TweetsComponent implements OnInit {
   }
   showEditTodoDialog() {
     this.commentModal = this._dialog.open(this.commentTemplateModal, {
-       disableClose: true
+       disableClose:false
     });
   }
 
