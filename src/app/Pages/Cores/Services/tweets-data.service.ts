@@ -10,7 +10,7 @@ import { Tweets } from '../Interfaces/tweets.interface';
   providedIn: 'root'
 })
 export class TweetsDataService {
-  private baseUrl = 'https://ng-twitter-clone.herokuapp.com';
+  private baseUrl = 'https://ng-twitter-app.herokuapp.com';
   private headers: HttpHeaders;
   constructor(private http: HttpClient, private router: Router, private _authService: AuthService) {
     this.headers = new HttpHeaders().set("Authorization", "Bearer " + this._authService.getToken());

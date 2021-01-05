@@ -12,7 +12,7 @@ import { TweetsDataService } from './tweets-data.service';
 export class AuthService {
   private token: any;
 
-  private baseUrl = 'https://ng-twitter-clone.herokuapp.com';
+  private baseUrl = 'https://ng-twitter-app.herokuapp.com';
 
   constructor( private http: HttpClient, private router: Router) {
 
