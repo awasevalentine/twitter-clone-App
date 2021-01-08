@@ -1,40 +1,21 @@
 .main-content-wrapper{
     height: 100%;
     width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 
-  }
-  .tweet-wrapper{
-    /*border-bottom: solid silver 3px;*/
-  }
-  hr{
-   
-    border: solid silver 5px !important;
   }
   .grid-wrapper{
     height: 100%;
-  }
-  
-  .sidenav-wrapper1{
-    display: inline-flex;
-    flex-direction: column;
-    padding: 10em;
-    padding-top: 3em !important;
-    padding-bottom: 2em !important;
   }
   .link-wrapper{
     padding-top: 3em;
     padding-right: 3em !important;
   }
-  .example-full-width{
-    width: 100%;
-    border-width: 0px;
-    border-radius: 0px;
-  }
+
   .button-wrapper{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 3em;
+   
   
   }
   .btn-wrapper{
@@ -59,11 +40,6 @@
   .example-header-image {
   
     background-size: cover;
-  }
-  .textarea{
-    resize: none;
-    border: none;
-    outline: none ;
   }
   .close{
     cursor: pointer;

@@ -1,0 +1,68 @@
+<div class="mt-5 main-content-wrapper">
+<mat-nav-list>
+    <div class="profile-card ml-4 mt-5">
+        <i class="fa fa-twitter" aria-hidden="true" style="font-size: 30px; color: blue;"></i>
+    </div>
+<div fxLayout="column" fxLayoutGap="20px" class="ml-4">
+    
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/">
+            <i class="fa fa-home link-wrapper mr-2" aria-hidden="true"></i>Home</a>
+
+    
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/post">
+            <i class="fa fa-user link-wrapper mr-2" aria-hidden="true"></i>Profile</a>
+
+   
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/acticles">
+            <i class="fa fa-wrench link-wrapper mr-2" aria-hidden="true"></i>Settings</a>
+
+    <div class="tweet-wrapper">
+        <button type="button" class="btn-wrapper btn btn-primary" (click)="Tweet()">Tweet</button>
+    </div>
+</div>
+<hr style="width: 300px">
+<div class="mt-5">
+    <a mat-button [matMenuTriggerFor]="menu">
+        <i class="fa fa-user-circle mr-2" aria-hidden="true" style="font-size: 50px;"></i>
+        {{this.user.email}}
+    </a>
+    <mat-menu #menu="matMenu">
+        <a mat-menu-item type="button" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon> sign out
+        </a>
+    
+    </mat-menu>
+</div>
+</mat-nav-list>
+</div>
+
+
+
+
+<!--this div takes care of replying tweets that a user posted-->
+
+  <div>
+    <ng-template #commentTemplateModal>
+  
+    <div class="container-fluid w-100">
+      <span class="close d-inline-block align-top" (click)="commentModal.close()">&times;</span>
+        <div mat-mat-dialog-content class="align-items-center pt-3 pb-2 mb-3 border-bottom input-wrapper d-sm-flex justify-content-center w-100">
+        <form #tweetForm="ngForm" method="POST" action="/create" id="newTodos" name="newTodos" class="w-100">
+  
+                    <mat-form-field class="example-full-width">
+  
+                         <textarea class="textarea-wrapper"  autocomplete="off" matInput rows="10" cols="50" name="commentsDetails" id="commentsDetails" placeholder="Enter comment" [(ngModel)]="commentMsg"></textarea>
+  
+                    </mat-form-field>
+        </form>
+        </div>
+              <div mat-dialog-actions>
+            <div class=" reply-button-wrapper mt-sm-3 d-flex justify-content-left">
+                <button mat-raised-button color="primary" type="submit" class="btn-lg" (click)="postComment(tweetForm)" [disabled]="!commentMsg">Reply</button>
+              </div>
+            </div>
+  
+    </div>
+    </ng-template>
+    </div>
+  

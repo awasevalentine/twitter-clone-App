@@ -1,12 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { TweetsDataService } from '../../Cores/Services/tweets-data.service';
-import { Tweets } from '../../Cores/Interfaces/tweets.interface';
-import { AuthService } from '../../Cores/Services/auth.service';
+import { NgForm } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CreateUSerTweet } from '../../Cores/Interfaces/user-Tweet.interface';
-import { Comments } from '../../Cores/Interfaces/comment.interface';
-
+import { Tweets } from 'src/app/Core/Interfaces/tweets.interface';
+import { CreateUSerTweet } from 'src/app/Core/Interfaces/user-Tweet.interface';
+import { AuthService } from 'src/app/Core/Services/auth.service';
+import { TweetsDataService } from 'src/app/Core/Services/tweets-data.service';
 @Component({
   selector: 'app-tweets',
   templateUrl: './tweets.component.html',
@@ -42,9 +41,7 @@ export class TweetsComponent implements OnInit {
   }
 
 
-  postTweet(){
-
-    console.log(`data sent to server -> `, this.tweet);
+  postTweet(tweetForm: NgForm){
     this.tweet = {content: this.tweetMsg, userId: this._authService.getUserDetails().email }
     this._tweetService.postTweet(this.tweet).subscribe(
       (data) => {
@@ -55,7 +52,8 @@ export class TweetsComponent implements OnInit {
         }
       },
       (error) => {}
-    )
+    );
+    tweetForm.reset();
   }
 
 
@@ -67,7 +65,7 @@ export class TweetsComponent implements OnInit {
           this.myloader = true;
         }
         this.tweets = data && data.length > 1 ? data.reverse(): [];
-        console.log(`this are the tweets `, data);
+        
         this.myloader = false;
       },
       (err) => {
@@ -137,7 +135,7 @@ export class TweetsComponent implements OnInit {
   }
 
   // method for saving the updated todo
-  postComment() {
+  postComment(tweetForm: NgForm) {
     let comments ={message: this.commentMsg, twitId: this.twit_Id, userId: this._authService.getUserDetails().email}
 
     this._tweetService.addCommentOnTweet(this.twit_Id,comments).subscribe(
@@ -149,7 +147,8 @@ export class TweetsComponent implements OnInit {
       (err) => {
 
       }
-    )
+    );
+    tweetForm.reset();
   }
 
 

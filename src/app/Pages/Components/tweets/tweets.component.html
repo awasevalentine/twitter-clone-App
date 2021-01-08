@@ -1,51 +1,75 @@
-<div class="main-content-wrapper">
-<div class="row tweet-wrapper">
-  <div class="col-sm-1">
-    <i class="fa fa-user-circle mr-sm-5" aria-hidden="true" style="font-size: 50px;"></i>
+<div class="main-content-wrapper mt-5">
+
+  <!--this div is responsible for the handling of creating new tweet on large screens-->
+
+<div fxFlex fxFlexLayout="row" class="mt-5">
+    <div [fxFlex.gt-sm]="9" [fxFlex.lt-md]="15" fxLayout="row" fxLayoutGap="20px">
+      <i class="fa fa-user-circle ml-1" aria-hidden="true" style="font-size: 50px;"></i>
+      {{this.user.getUserDetails().fullName}}
+    </div>
+
+    <div [fxFlex.gt-sm]="90" [fxFlex.lt-md]="80" fxLayout="column" class="mt-3">
+      <form #tweetForm ='ngForm'>
+        <mat-form-field class="w-100">
+      
+             <textarea matInput class="textarea-wrapper w-100" name="tweet" id="tweet" cols="200" autocomplete="off" placeholder="What's happening?"  [(ngModel)] = "tweetMsg">
+             </textarea>
+        </mat-form-field>
+      </form>
+
+      <div class="button-wrapper" [fxFlex.gt-sm]="100" [fxFlex.lt-md]="100" fxLayout="row" fxLayoutAlign="end start">
+        <button type="submit" [disabled] = "!tweetMsg" class="btn-wrapper btn btn-primary" (click)="postTweet(tweetForm)">Tweet</button>
+        
+      </div>
+      
+    </div>
   </div>
-  <div class="col-sm-7 col-md-10">
-    <form #tweetForm = 'ngForm' class="example-form w-100">
-      <mat-form-field class="example-full-width">
+
+  <hr style="border: solid silver 2px; width: 100%;">
+
+
+  <!--this div is responsible for the display of all tweet on the  server-->
+
+  <div fxLayout="row" class="content-wrapper mt-2" *ngFor="let tweet of tweets">
     
-           <textarea matInput class="textarea-wrapper w-100" name="tweet" id="tweet" cols="200" autocomplete="off" placeholder="What's happening?"  [(ngModel)] = "tweetMsg">
-           </textarea>
-      </mat-form-field>
-    </form>
-  </div>
-    <div class="button-wrapper">
-    <button type="submit" [disabled] = "!tweetMsg" class="btn-wrapper btn btn-primary" (click)="postTweet()">Tweet</button>
-  </div>
-  
-  
-  </div>
-  <hr>
-  <div class="content-wrapper" *ngFor="let tweet of tweets">
-    <mat-card class="example-card">
+    <mat-card class="example-card w-100">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"> <i class="fa fa-user-circle mr-5" aria-hidden="true" style="font-size: 50px;"></i></div>
+        <div mat-card-avatar class="example-header-image">
+          <i class="fa fa-user-circle mr-5" aria-hidden="true" style="font-size: 50px;"></i>
+        </div>
+
         <mat-card-title class="ml-1" style="font-size: 11px;">{{tweet.user_Id.split("@")[0]}}</mat-card-title>
         <mat-card-subtitle>{{tweet.date_Created | date: "medium"}}</mat-card-subtitle>
       </mat-card-header>
-      <div class="mt-3" style="padding-left: 5em;">
+
+    <div class="mt-3" style="padding-left: 5em;">
       <mat-card-content>
-       {{tweet.content}}
+
+          {{tweet.content}}
+          
       </mat-card-content>
       <mat-card-actions>
-        <button mat-icon-button type="submit" (click) = "likeButton(tweet)">
-          <i class="fa" [ngClass]="{'liked-class': tweet['liked'], 'fa-heart': tweet['liked'], 'fa-heart-o': !tweet['liked']}"></i>
-        </button> <span class="badge" *ngIf="tweet.likes_Count != 0 ">{{tweet.likes_Count}}</span>
-        <button mat-button type="submit" (click)="commentButton(tweet)">Comment</button>  <span class="badge"  *ngIf="tweet.commentsCount != 0 ">{{tweet.commentsCount}}</span>
-        <button *ngIf="tweet.user_Id == loggedInUserId" mat-icon-button type="submit" (click) = "deleteButton(tweet)">
+          <button mat-icon-button type="submit" (click) = "likeButton(tweet)">
+             <i class="fa" [ngClass]="{'liked-class': tweet['liked'], 'fa-heart': tweet['liked'], 'fa-heart-o': !tweet['liked']}"></i>
+          </button>
+              <span class="badge" *ngIf="tweet.likes_Count != 0 ">{{tweet.likes_Count}}</span>
+
+          <button mat-button type="submit" (click)="commentButton(tweet)">Comment</button>
+              <span class="badge"  *ngIf="tweet.commentsCount != 0 "> {{tweet.commentsCount}} </span>
+
+          <button *ngIf="tweet.user_Id == loggedInUserId" mat-icon-button type="submit" (click) = "deleteButton(tweet)">
           <i class="fa fa-trash-o"></i>
-        </button>
+          </button>
       </mat-card-actions>
     </div>
-    </mat-card>
+  </mat-card>
   
   </div>
 </div>
   
   
+<!--this div takes care of replying tweets that a user posted-->
+
   <div>
     <ng-template #commentTemplateModal>
   
@@ -63,7 +87,7 @@
         </div>
               <div mat-dialog-actions>
             <div class=" reply-button-wrapper mt-sm-3 d-flex justify-content-left">
-                <button mat-raised-button color="primary" type="submit" class="btn-lg" (click)="postComment()" [disabled]="!commentMsg">Reply</button>
+                <button mat-raised-button color="primary" type="submit" class="btn-lg" (click)="postComment(tweetForm)" [disabled]="!commentMsg">Reply</button>
               </div>
             </div>
   

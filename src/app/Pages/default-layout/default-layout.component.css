@@ -1,0 +1,12 @@
+
+mat-drawer{
+    width: 300Px;
+}
+
+mat-drawer-content{
+    height: 100vh;
+}
+
+.fixed-top{
+    background-color: white;
+}

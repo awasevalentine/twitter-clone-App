@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService } from '../../Cores/Services/auth.service';
+import { AuthService } from 'src/app/Core/Services/auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -31,7 +31,7 @@ export class UserLoginComponent implements OnInit {
 
         this.authService.saveGeneratedToken(data.accessToken);
         this.token = data.accessToken;
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/');
         this._snackbar.open('User successfully logged in', 'Ok', { horizontalPosition: 'right', verticalPosition: 'bottom' });
 
         return;

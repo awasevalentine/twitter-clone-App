@@ -1,0 +1,41 @@
+<!--the following footer will only show on medium screen upward-->
+<div fxHide.lt-md="true">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <div fxFlex fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center start">
+            <span>&copy; Copyright 2021</span>
+        </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+
+<!--the following footer will only show on  screen ranging from 959px downward-->
+<div fxHide.gt-sm="true">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <div fxFlex="25" fxLayout="row">
+                <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+                
+            </div>
+            <div fxFlex="25" fxLayout="row">
+                <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div fxFlex="25" fxLayout="row">
+                <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-bell" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div fxFlex="25" fxLayout="row" fxLayoutAlign="center start">
+                <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </a>
+                
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>

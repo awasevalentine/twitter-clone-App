@@ -1,0 +1,43 @@
+<div class="mt-5 main-content-wrapper">
+    <mat-nav-list>
+        <div class="profile-card ml-4 mt-3">
+            <i class="fa fa-user-circle mr-2" aria-hidden="true" style="font-size: 50px;"></i>
+            <!--{{this.user.getUserDetails().fullName}}-->
+            <br>
+            <div class="mt-4 followers-wrapper" fxLayout="row">
+                <span >0 Following </span>
+                <span class="ml-3">0 Followers</span>
+            </div>
+            
+        </div>
+
+        <hr style="width: 300px;">
+
+    <div fxLayout="column" fxLayoutGap="20px" class="ml-4">
+
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/post">
+                <i class="fa fa-user link-wrapper mr-2" aria-hidden="true"></i>Profile</a>
+    
+       
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/acticles">
+                <i class="fa fa-list-alt mr-2" aria-hidden="true"></i>List</a>
+
+                <a mat-list-item routerLinkActive="list-item-active" routerLink="/acticles">
+                    <i class="fa fa-commenting-o mr-2" aria-hidden="true"></i>Topics</a>
+
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/acticles">
+                <i class="fa fa-bookmark mr-2" aria-hidden="true"></i>Bookmarks</a>
+
+                <a mat-list-item routerLinkActive="list-item-active" routerLink="/acticles">
+                    <i class="fa fa-bolt mr-2" aria-hidden="true"></i>Moments</a>
+    </div>
+
+    
+    <hr class="w-100">
+    <div>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/acticles">Settings and privacy</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/acticles">Help Centre</a>   
+    </div>
+ 
+    </mat-nav-list>
+    </div>

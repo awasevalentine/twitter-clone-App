@@ -13,6 +13,7 @@ export class AuthService {
   private token: any;
 
   private baseUrl = 'https://ng-twitter-app.herokuapp.com';
+  //private baseUrl = 'http://localhost:3000';
 
   constructor( private http: HttpClient, private router: Router) {
 

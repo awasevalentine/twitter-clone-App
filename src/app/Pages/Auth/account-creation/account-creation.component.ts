@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService } from '../../Cores/Services/auth.service';
+import { AuthService } from 'src/app/Core/Services/auth.service';
 
 @Component({
   selector: 'app-account-creation',

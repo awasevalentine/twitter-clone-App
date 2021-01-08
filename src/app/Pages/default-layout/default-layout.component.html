@@ -1,0 +1,36 @@
+<div class="main-contnet-wrapper">
+    <div fxHide.gt-sm="true" class="fixed-top">
+        <app-header (toggleSideBarForMe)="sideBarToggler()" ></app-header>
+    </div>
+        <mat-drawer-container>
+            <mat-drawer position="start" mode="side" [opened]="sideBarOpen">
+                <div fxHide.gt-sm="true">
+                    <app-mobile-sidebar></app-mobile-sidebar>
+                </div>
+                <div fxHide.lt-md="true">
+                    <app-sidebar></app-sidebar>
+                </div>
+                
+            </mat-drawer>
+            <mat-drawer position="end" mode="side" [opened]="sideBarOpen" fxHide.lt-md="true">
+                <div>
+                    <app-end-sidebar ></app-end-sidebar>
+                </div>
+                
+            </mat-drawer>
+            <mat-drawer-content class="mb-4">
+                <div class="fixed-top" fxHide.lt-md="true">
+                    <app-header (toggleSideBarForMe)="sideBarToggler()" ></app-header>
+
+                <hr style="border: solid silver 1px; width: 100%;">
+                </div>
+
+                <router-outlet></router-outlet>
+
+            </mat-drawer-content>
+        </mat-drawer-container>
+        <div class="fixed-bottom">
+            <app-footer></app-footer>
+        </div>
+    
+</div>

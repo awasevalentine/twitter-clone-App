@@ -1,0 +1,13 @@
+:host{
+    width: 100%;
+}
+.flex-layout {
+    padding-top: 1.5em;
+    padding-left: 320Px;
+}
+
+.mat-display-1{
+    padding-bottom: 0% !important;
+    margin-bottom: 0% !important;
+}
+

@@ -1,0 +1,24 @@
+
+<div fxFlex fxLayout="row" fxLayoutAlign="start" class="flex-layout" fxHide.lt-md="true">
+  
+            <h4 class="mat-display-1">Home</h4>
+</div>
+
+
+<!--this is for the mobile view header-->
+
+    <mat-toolbar fxHide.gt-sm="true">
+        <mat-toolbar-row >
+        <div fxFlex="25" fxLayout="row">
+            <button mat-icon-button (click)="toggleSideBar()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+            <div fxFlex="40" fxLayout="row" fxLayoutAlign="center start">
+                <i class="fa fa-twitter" aria-hidden="true" style="font-size: 30px; color: blue;"></i>
+            </div>
+            <div fxFlex="25" fxLayout="row" fxLayoutAlign="end start">
+                <i class="fa fa-star-o" aria-hidden="true"  style="font-size: 30px; color: blue;"></i>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>

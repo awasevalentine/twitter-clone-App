@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageLayoutComponent } from './Pages/Components/page-layout/page-layout.component';
-import { HomePageComponent } from './Pages/Components/home-page/home-page.component';
-import { DashboardComponent } from './Pages/Components/dashboard/dashboard.component';
 import { AccountCreationComponent } from './Pages/Auth/account-creation/account-creation.component';
 import { UserLoginComponent } from './Pages/Auth/user-login/user-login.component';
 import { TweetsComponent } from './Pages/Components/tweets/tweets.component';
 import { LoggedInGuard } from './Pages/Auth/logged-in-guard';
+import { DefaultLayoutComponent } from './Pages/default-layout/default-layout.component';
 
 const routes: Routes = [
   {
@@ -16,10 +14,8 @@ const routes: Routes = [
     path: 'user-login', component: UserLoginComponent
   },
   {
-    path: '', component: PageLayoutComponent, canActivate: [ LoggedInGuard ]
-  },
-  {
-    path: 'dashboard', component: PageLayoutComponent, canActivate: [ LoggedInGuard ],
+    path: '', component: DefaultLayoutComponent, canActivate: [ LoggedInGuard ],
+
     children: [
       {
         path: '', component: TweetsComponent, canActivate: [ LoggedInGuard ]
