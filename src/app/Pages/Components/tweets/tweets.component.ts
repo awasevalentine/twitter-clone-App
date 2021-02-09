@@ -4,6 +4,7 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Tweets } from 'src/app/Core/Interfaces/tweets.interface';
 import { CreateUSerTweet } from 'src/app/Core/Interfaces/user-Tweet.interface';
+import { MessageBox } from 'src/app/Core/message/snack-bar.message';
 import { AuthService } from 'src/app/Core/Services/auth.service';
 import { TweetsDataService } from 'src/app/Core/Services/tweets-data.service';
 @Component({
@@ -15,6 +16,9 @@ export class TweetsComponent implements OnInit {
   @ViewChild('commentTemplateModal') commentTemplateModal: TemplateRef<any>; // template reference for the update modal
   commentModal: MatDialogRef<any>;
   public tweets: Tweets[] = [];
+  public userImage;
+  public userImageFromTweet;
+  userImageStatus: boolean;
 
   loggedInUserId: string = '';
   myloader: boolean;
@@ -31,13 +35,54 @@ export class TweetsComponent implements OnInit {
   public user = this._authService;
 
   constructor(private _tweetService: TweetsDataService, private _authService: AuthService, private _dialog: MatDialog,
-              private _snackbar: MatSnackBar) {
+              private _snackbar: MatSnackBar, private _snackbarMessage: MessageBox) {
                 this.loggedInUserId = this._authService.getUserDetails().email;
               }
 
   ngOnInit(): void {
+    this.getImageFromService();
     this.getALlTweets();
 
+  }
+
+  //method for getting logged in user image
+
+  createImageFromBlob(image: Blob){
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.userImage = reader.result;
+    }, false);
+    if(image) {
+      reader.readAsDataURL(image);
+    }
+    return 
+  }
+
+  getImageFromService() {
+    this._tweetService.getImageFromTwit().subscribe(
+      data => {
+        this.createImageFromBlob(data);
+        if (data) {
+          //this.userImageStatus = true;
+        }
+      },
+      error => {
+        //this._snackbarMessage.snackBarMessage(error.message);
+      }
+    );
+
+    this._authService.getUserProfile().subscribe(
+      data => {
+        this.createImageFromBlob(data);
+        if(data) {
+          this.userImageStatus = true;
+        }
+      },
+
+      error => {
+        this._snackbarMessage.snackBarMessage(error.message);
+      }
+    )
   }
 
 
@@ -61,6 +106,7 @@ export class TweetsComponent implements OnInit {
    
     this._tweetService.getTweets().subscribe(
       (data) => {
+        console.log(`tweet data`, data);
         if(data){
           this.myloader = true;
         }

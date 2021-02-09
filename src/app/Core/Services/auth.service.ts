@@ -1,3 +1,4 @@
+import {catchError, retry} from 'rxjs/internal/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,12 +11,16 @@ import { TweetsDataService } from './tweets-data.service';
   providedIn: 'root'
 })
 export class AuthService {
+
   private token: any;
+  
 
   private baseUrl = 'https://ng-twitter-app.herokuapp.com';
   //private baseUrl = 'http://localhost:3000';
 
   constructor( private http: HttpClient, private router: Router) {
+
+  
 
   }
 
@@ -60,6 +65,15 @@ export class AuthService {
       return null;
     }
     }
+
+  public getUserProfile(): Observable<any>{
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json; text/html; image/jpeg'
+    });
+    const getImagePath = this.getUserDetails().imagePath;
+    return this.http.get<any>(`${this.baseUrl}/api/users/${getImagePath}`, { responseType: 'blob' as 'json', headers: header });
+    }
+
 
 
   public isLoggedIn(): boolean {

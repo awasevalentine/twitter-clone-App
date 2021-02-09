@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DefaultLayoutComponent } from '../Pages/default-layout/default-layout.component';
 import { MobileSidebarComponent } from './mobile-sidebar/mobile-sidebar.component';
 import { EndSidebarComponent } from './end-sidebar/end-sidebar.component';
+import { MessageBox } from '../Core/message/snack-bar.message';
 
 
 
@@ -38,6 +39,6 @@ import { EndSidebarComponent } from './end-sidebar/end-sidebar.component';
     EndSidebarComponent
   ],
   
-  providers: []
+  providers: [MessageBox]
 })
 export class SharedModule { }

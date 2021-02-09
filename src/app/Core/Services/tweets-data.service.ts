@@ -27,6 +27,20 @@ export class TweetsDataService {
     return this.http.get<any>(`${this.baseUrl}/api/twits`,  {headers: this.headers});
   }
 
+  public getImageFromTwit(): Observable<any> {
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json; text/html; image/jpeg'
+    });
+    let imagePath;
+    this.getTweets().subscribe(
+      data => {
+        imagePath = data["user_Image_Path"]
+      }
+    )
+    return this.http.get<any>(`${this.baseUrl}/api/users/${imagePath}`,
+      { responseType: 'blob' as 'json', headers: header });
+    }
+
 
   public getTweetByUserId(userEmail: string): Observable<any>{
     return this.http.get<any> (`${this.baseUrl}/api/twits/user/${userEmail}`,  {headers: this.headers});

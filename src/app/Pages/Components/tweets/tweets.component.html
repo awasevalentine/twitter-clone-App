@@ -4,7 +4,8 @@
 
 <div fxFlex fxFlexLayout="row" class="mt-5">
     <div [fxFlex.gt-sm]="9" [fxFlex.lt-md]="15" fxLayout="row" fxLayoutGap="20px">
-      <i class="fa fa-user-circle ml-1" aria-hidden="true" style="font-size: 50px;"></i>
+      <i *ngIf="!userImageStatus" class="fa fa-user-circle ml-1" aria-hidden="true" style="font-size: 50px;"></i>
+      <img *ngIf="userImageStatus" [src]="userImage" alt="" style="width: 50px; height: 50px">
       {{this.user.getUserDetails().fullName}}
     </div>
 
@@ -35,7 +36,12 @@
     <mat-card class="example-card w-100">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image">
-          <i class="fa fa-user-circle mr-5" aria-hidden="true" style="font-size: 50px;"></i>
+          <div >
+            <i  class="fa fa-user-circle mr-5" aria-hidden="true" style="font-size: 50px;"></i>
+          </div>
+          <!--div>
+            <img [src]="userImageFromTweet" alt="" style="width: 50px; height: 50px">
+          </div-->
         </div>
 
         <mat-card-title class="ml-1" style="font-size: 11px;">{{tweet.user_Id.split("@")[0]}}</mat-card-title>

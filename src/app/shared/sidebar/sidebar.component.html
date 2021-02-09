@@ -23,7 +23,10 @@
 <hr style="width: 300px">
 <div class="mt-5">
     <a mat-button [matMenuTriggerFor]="menu">
-        <i class="fa fa-user-circle mr-2" aria-hidden="true" style="font-size: 50px;"></i>
+        <i *ngIf="!userImageStatus" class="fa fa-user-circle mr-2" aria-hidden="true" style="font-size: 50px;"></i>
+        
+            <img *ngIf="userImageStatus" [src]="userImage" alt="" style="width: 50px; height: 50px">
+        
         {{this.user.email}}
     </a>
     <mat-menu #menu="matMenu">

@@ -47,5 +47,12 @@
   .liked-class {
     color: rgb(224, 36, 94);
   }
+
+  img{
+    border-radius: 50%;
+    width: 100px;
+        height: 100px;
+        object-fit: cover;
+  }
   
   
